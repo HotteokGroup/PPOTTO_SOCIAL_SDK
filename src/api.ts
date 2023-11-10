@@ -381,7 +381,7 @@ export interface GetShareAlbumFeedListItem {
      * @type {Array<GetShareAlbumFeedListContentItem>}
      * @memberof GetShareAlbumFeedListItem
      */
-    'FeedContent': Array<GetShareAlbumFeedListContentItem>;
+    'feedContentList': Array<GetShareAlbumFeedListContentItem>;
     /**
      * 생성일
      * @type {string}
@@ -443,13 +443,13 @@ export interface GetShareAlbumFeedResponse {
      * @type {Array<GetShareAlbumFeedContentItem>}
      * @memberof GetShareAlbumFeedResponse
      */
-    'FeedContent': Array<GetShareAlbumFeedContentItem>;
+    'feedContentList': Array<GetShareAlbumFeedContentItem>;
     /**
      * 피드 코멘트
      * @type {Array<GetShareAlbumFeedCommentItem>}
      * @memberof GetShareAlbumFeedResponse
      */
-    'FeedComment': Array<GetShareAlbumFeedCommentItem>;
+    'feedCommentList': Array<GetShareAlbumFeedCommentItem>;
     /**
      * 생성일
      * @type {string}
