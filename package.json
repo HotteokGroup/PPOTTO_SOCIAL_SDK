@@ -1,0 +1,32 @@
+{
+  "name": "@ppotto/social-api-client",
+  "version": "0.0.5",
+  "description": "Ppotto Social API Client",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "open-api:generate": "openapi-generator-cli generate -i open-api-spec.json -g typescript-axios -o src --additional-properties=withNodeImports=true",
+    "patch": "pnpm version patch && npm publish",
+    "package-build:publish": "pnpm run build && pnpm run open-api:generate && pnpm run patch"
+  },
+  "keywords": [],
+  "author": {
+    "name": "argon1025",
+    "email": "argon1025@gmail.com",
+    "url": "https://github.com/argon1025"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "@types/node": "^20.5.9",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
