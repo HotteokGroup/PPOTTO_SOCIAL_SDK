@@ -29,115 +29,179 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
 /**
  * 
  * @export
- * @interface CreateShareAlbumFeedCommentRequest
+ * @interface AddFeedToCollectionRequest
  */
-export interface CreateShareAlbumFeedCommentRequest {
-    /**
-     * 유저 아이디
-     * @type {number}
-     * @memberof CreateShareAlbumFeedCommentRequest
-     */
-    'userId': number;
-    /**
-     * 댓글 내용
-     * @type {string}
-     * @memberof CreateShareAlbumFeedCommentRequest
-     */
-    'description': string;
-}
-/**
- * 
- * @export
- * @interface CreateShareAlbumFeedCommentResponse
- */
-export interface CreateShareAlbumFeedCommentResponse {
+export interface AddFeedToCollectionRequest {
     /**
      * 피드 아이디
      * @type {string}
-     * @memberof CreateShareAlbumFeedCommentResponse
+     * @memberof AddFeedToCollectionRequest
      */
     'feedId': string;
 }
 /**
  * 
  * @export
- * @interface CreateShareAlbumFeedItem
+ * @interface AddFeedToCollectionResponse
  */
-export interface CreateShareAlbumFeedItem {
+export interface AddFeedToCollectionResponse {
+    /**
+     * 컬렉션 아이디
+     * @type {string}
+     * @memberof AddFeedToCollectionResponse
+     */
+    'collectionId': string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateCollectionRequest
+ */
+export interface CreateCollectionRequest {
+    /**
+     * 회원 아이디
+     * @type {number}
+     * @memberof CreateCollectionRequest
+     */
+    'userId': number;
+    /**
+     * 컬렉션명
+     * @type {string}
+     * @memberof CreateCollectionRequest
+     */
+    'name': string;
+    /**
+     * 컬렉션 설명
+     * @type {string}
+     * @memberof CreateCollectionRequest
+     */
+    'description'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateCollectionResponse
+ */
+export interface CreateCollectionResponse {
+    /**
+     * 컬렉션 아이디
+     * @type {string}
+     * @memberof CreateCollectionResponse
+     */
+    'collectionId': string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateFeedCommentRequest
+ */
+export interface CreateFeedCommentRequest {
+    /**
+     * 유저 아이디
+     * @type {number}
+     * @memberof CreateFeedCommentRequest
+     */
+    'userId': number;
+    /**
+     * 댓글 내용
+     * @type {string}
+     * @memberof CreateFeedCommentRequest
+     */
+    'description': string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateFeedCommentResponse
+ */
+export interface CreateFeedCommentResponse {
+    /**
+     * 피드 아이디
+     * @type {string}
+     * @memberof CreateFeedCommentResponse
+     */
+    'feedId': string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateFeedItem
+ */
+export interface CreateFeedItem {
     /**
      * 콘텐츠 아이디
      * @type {string}
-     * @memberof CreateShareAlbumFeedItem
+     * @memberof CreateFeedItem
      */
     'contentId': string;
     /**
      * 콘텐츠 타입
      * @type {string}
-     * @memberof CreateShareAlbumFeedItem
+     * @memberof CreateFeedItem
      */
-    'type': CreateShareAlbumFeedItemTypeEnum;
+    'type': CreateFeedItemTypeEnum;
     /**
      * 콘텐츠 URL
      * @type {string}
-     * @memberof CreateShareAlbumFeedItem
+     * @memberof CreateFeedItem
      */
     'contentSmallUrl'?: string;
     /**
      * 콘텐츠 URL
      * @type {string}
-     * @memberof CreateShareAlbumFeedItem
+     * @memberof CreateFeedItem
      */
     'contentMediumUrl'?: string;
     /**
      * 콘텐츠 URL
      * @type {string}
-     * @memberof CreateShareAlbumFeedItem
+     * @memberof CreateFeedItem
      */
     'contentLargeUrl'?: string;
 }
 
-export const CreateShareAlbumFeedItemTypeEnum = {
+export const CreateFeedItemTypeEnum = {
     Image: 'IMAGE',
     Video: 'VIDEO'
 } as const;
 
-export type CreateShareAlbumFeedItemTypeEnum = typeof CreateShareAlbumFeedItemTypeEnum[keyof typeof CreateShareAlbumFeedItemTypeEnum];
+export type CreateFeedItemTypeEnum = typeof CreateFeedItemTypeEnum[keyof typeof CreateFeedItemTypeEnum];
 
 /**
  * 
  * @export
- * @interface CreateShareAlbumFeedRequest
+ * @interface CreateFeedRequest
  */
-export interface CreateShareAlbumFeedRequest {
+export interface CreateFeedRequest {
     /**
      * 유저 아이디
      * @type {number}
-     * @memberof CreateShareAlbumFeedRequest
+     * @memberof CreateFeedRequest
      */
     'userId': number;
     /**
      * 피드 내용
      * @type {string}
-     * @memberof CreateShareAlbumFeedRequest
+     * @memberof CreateFeedRequest
      */
     'description'?: string;
     /**
      * 피드 콘텐츠
-     * @type {Array<CreateShareAlbumFeedItem>}
-     * @memberof CreateShareAlbumFeedRequest
+     * @type {Array<CreateFeedItem>}
+     * @memberof CreateFeedRequest
      */
-    'contents': Array<CreateShareAlbumFeedItem>;
+    'contents': Array<CreateFeedItem>;
 }
 /**
  * 
  * @export
- * @interface CreateShareAlbumFeedResponse
+ * @interface CreateFeedResponse
  */
-export interface CreateShareAlbumFeedResponse {
+export interface CreateFeedResponse {
     /**
      * 피드 아이디
      * @type {string}
-     * @memberof CreateShareAlbumFeedResponse
+     * @memberof CreateFeedResponse
      */
     'feedId': string;
 }
@@ -195,28 +259,54 @@ export interface CreateShareAlbumResponse {
 /**
  * 
  * @export
- * @interface DeleteShareAlbumFeedCommentRequest
+ * @interface DeleteCollectionResponse
  */
-export interface DeleteShareAlbumFeedCommentRequest {
+export interface DeleteCollectionResponse {
+    /**
+     * 삭제된 컬렉션 아이디
+     * @type {string}
+     * @memberof DeleteCollectionResponse
+     */
+    'collectionId': string;
+}
+/**
+ * 
+ * @export
+ * @interface DeleteFeedCommentRequest
+ */
+export interface DeleteFeedCommentRequest {
     /**
      * 유저 아이디
      * @type {number}
-     * @memberof DeleteShareAlbumFeedCommentRequest
+     * @memberof DeleteFeedCommentRequest
      */
     'userId': number;
 }
 /**
  * 
  * @export
- * @interface DeleteShareAlbumFeedCommentResponse
+ * @interface DeleteFeedCommentResponse
  */
-export interface DeleteShareAlbumFeedCommentResponse {
+export interface DeleteFeedCommentResponse {
     /**
      * 피드 아이디
      * @type {string}
-     * @memberof DeleteShareAlbumFeedCommentResponse
+     * @memberof DeleteFeedCommentResponse
      */
     'feedId': string;
+}
+/**
+ * 
+ * @export
+ * @interface DeleteFeedToCollectionResponse
+ */
+export interface DeleteFeedToCollectionResponse {
+    /**
+     * 컬렉션 아이디
+     * @type {string}
+     * @memberof DeleteFeedToCollectionResponse
+     */
+    'collectionId': string;
 }
 /**
  * 
@@ -234,269 +324,269 @@ export interface DeleteShareAlbumMemberResponse {
 /**
  * 
  * @export
- * @interface GetShareAlbumFeedCommentItem
+ * @interface GetFeedCommentItem
  */
-export interface GetShareAlbumFeedCommentItem {
+export interface GetFeedCommentItem {
     /**
      * 코멘트 아이디
      * @type {string}
-     * @memberof GetShareAlbumFeedCommentItem
+     * @memberof GetFeedCommentItem
      */
     'id': string;
     /**
      * 유저 아이디
      * @type {number}
-     * @memberof GetShareAlbumFeedCommentItem
+     * @memberof GetFeedCommentItem
      */
     'userId': number;
     /**
      * 내용
      * @type {string}
-     * @memberof GetShareAlbumFeedCommentItem
+     * @memberof GetFeedCommentItem
      */
     'description': string;
     /**
      * 생성일
      * @type {string}
-     * @memberof GetShareAlbumFeedCommentItem
+     * @memberof GetFeedCommentItem
      */
     'createdAt': string;
 }
 /**
  * 
  * @export
- * @interface GetShareAlbumFeedContentItem
+ * @interface GetFeedContentItem
  */
-export interface GetShareAlbumFeedContentItem {
+export interface GetFeedContentItem {
     /**
      * 콘텐츠 아이디
      * @type {string}
-     * @memberof GetShareAlbumFeedContentItem
+     * @memberof GetFeedContentItem
      */
     'id': string;
     /**
      * 콘텐츠 타입
      * @type {string}
-     * @memberof GetShareAlbumFeedContentItem
+     * @memberof GetFeedContentItem
      */
-    'type': GetShareAlbumFeedContentItemTypeEnum;
+    'type': GetFeedContentItemTypeEnum;
     /**
      * 콘텐츠 URL
      * @type {string}
-     * @memberof GetShareAlbumFeedContentItem
+     * @memberof GetFeedContentItem
      */
     'contentSmallUrl': string;
     /**
      * 콘텐츠 URL
      * @type {string}
-     * @memberof GetShareAlbumFeedContentItem
+     * @memberof GetFeedContentItem
      */
     'contentMediumUrl': string;
     /**
      * 콘텐츠 URL
      * @type {string}
-     * @memberof GetShareAlbumFeedContentItem
+     * @memberof GetFeedContentItem
      */
     'contentLargeUrl': string;
 }
 
-export const GetShareAlbumFeedContentItemTypeEnum = {
+export const GetFeedContentItemTypeEnum = {
     Image: 'IMAGE',
     Video: 'VIDEO'
 } as const;
 
-export type GetShareAlbumFeedContentItemTypeEnum = typeof GetShareAlbumFeedContentItemTypeEnum[keyof typeof GetShareAlbumFeedContentItemTypeEnum];
+export type GetFeedContentItemTypeEnum = typeof GetFeedContentItemTypeEnum[keyof typeof GetFeedContentItemTypeEnum];
 
 /**
  * 
  * @export
- * @interface GetShareAlbumFeedListContentItem
+ * @interface GetFeedListContentItem
  */
-export interface GetShareAlbumFeedListContentItem {
+export interface GetFeedListContentItem {
     /**
      * 피드 아이디
      * @type {string}
-     * @memberof GetShareAlbumFeedListContentItem
+     * @memberof GetFeedListContentItem
      */
     'id': string;
     /**
      * 피드 타입
      * @type {string}
-     * @memberof GetShareAlbumFeedListContentItem
+     * @memberof GetFeedListContentItem
      */
-    'type': GetShareAlbumFeedListContentItemTypeEnum;
+    'type': GetFeedListContentItemTypeEnum;
     /**
      * 피드 콘텐츠 URL
      * @type {string}
-     * @memberof GetShareAlbumFeedListContentItem
+     * @memberof GetFeedListContentItem
      */
     'contentSmallUrl': string;
     /**
      * 피드 콘텐츠 URL
      * @type {string}
-     * @memberof GetShareAlbumFeedListContentItem
+     * @memberof GetFeedListContentItem
      */
     'contentMediumUrl': string;
     /**
      * 피드 콘텐츠 URL
      * @type {string}
-     * @memberof GetShareAlbumFeedListContentItem
+     * @memberof GetFeedListContentItem
      */
     'contentLargeUrl': string;
 }
 
-export const GetShareAlbumFeedListContentItemTypeEnum = {
+export const GetFeedListContentItemTypeEnum = {
     Image: 'IMAGE',
     Video: 'VIDEO'
 } as const;
 
-export type GetShareAlbumFeedListContentItemTypeEnum = typeof GetShareAlbumFeedListContentItemTypeEnum[keyof typeof GetShareAlbumFeedListContentItemTypeEnum];
+export type GetFeedListContentItemTypeEnum = typeof GetFeedListContentItemTypeEnum[keyof typeof GetFeedListContentItemTypeEnum];
 
 /**
  * 
  * @export
- * @interface GetShareAlbumFeedListItem
+ * @interface GetFeedListItem
  */
-export interface GetShareAlbumFeedListItem {
+export interface GetFeedListItem {
     /**
      * 피드 아이디
      * @type {string}
-     * @memberof GetShareAlbumFeedListItem
+     * @memberof GetFeedListItem
      */
     'id': string;
     /**
      * 유저 아이디
      * @type {number}
-     * @memberof GetShareAlbumFeedListItem
+     * @memberof GetFeedListItem
      */
     'userId': number;
     /**
      * 피드 내용
      * @type {string}
-     * @memberof GetShareAlbumFeedListItem
+     * @memberof GetFeedListItem
      */
     'description': string;
     /**
      * 피드 콘텐츠
-     * @type {Array<GetShareAlbumFeedListContentItem>}
-     * @memberof GetShareAlbumFeedListItem
+     * @type {Array<GetFeedListContentItem>}
+     * @memberof GetFeedListItem
      */
-    'feedContentList': Array<GetShareAlbumFeedListContentItem>;
+    'feedContentList': Array<GetFeedListContentItem>;
     /**
      * 생성일
      * @type {string}
-     * @memberof GetShareAlbumFeedListItem
+     * @memberof GetFeedListItem
      */
     'createdAt': string;
     /**
      * 수정일
      * @type {string}
-     * @memberof GetShareAlbumFeedListItem
+     * @memberof GetFeedListItem
      */
     'updatedAt': string;
 }
 /**
  * 
  * @export
- * @interface GetShareAlbumFeedListResponse
+ * @interface GetFeedListResponse
  */
-export interface GetShareAlbumFeedListResponse {
+export interface GetFeedListResponse {
     /**
      * 토탈 카운트
      * @type {number}
-     * @memberof GetShareAlbumFeedListResponse
+     * @memberof GetFeedListResponse
      */
     'total': number;
     /**
      * 피드 리스트
-     * @type {Array<GetShareAlbumFeedListItem>}
-     * @memberof GetShareAlbumFeedListResponse
+     * @type {Array<GetFeedListItem>}
+     * @memberof GetFeedListResponse
      */
-    'list': Array<GetShareAlbumFeedListItem>;
+    'list': Array<GetFeedListItem>;
 }
 /**
  * 
  * @export
- * @interface GetShareAlbumFeedResponse
+ * @interface GetFeedResponse
  */
-export interface GetShareAlbumFeedResponse {
+export interface GetFeedResponse {
     /**
      * 피드 아이디
      * @type {string}
-     * @memberof GetShareAlbumFeedResponse
+     * @memberof GetFeedResponse
      */
     'id': string;
     /**
      * 유저 아이디
      * @type {number}
-     * @memberof GetShareAlbumFeedResponse
+     * @memberof GetFeedResponse
      */
     'userId': number;
     /**
      * 피드 내용
      * @type {string}
-     * @memberof GetShareAlbumFeedResponse
+     * @memberof GetFeedResponse
      */
     'description': string;
     /**
      * 피드 콘텐츠
-     * @type {Array<GetShareAlbumFeedContentItem>}
-     * @memberof GetShareAlbumFeedResponse
+     * @type {Array<GetFeedContentItem>}
+     * @memberof GetFeedResponse
      */
-    'feedContentList': Array<GetShareAlbumFeedContentItem>;
+    'feedContentList': Array<GetFeedContentItem>;
     /**
      * 피드 코멘트
-     * @type {Array<GetShareAlbumFeedCommentItem>}
-     * @memberof GetShareAlbumFeedResponse
+     * @type {Array<GetFeedCommentItem>}
+     * @memberof GetFeedResponse
      */
-    'feedCommentList': Array<GetShareAlbumFeedCommentItem>;
+    'feedCommentList': Array<GetFeedCommentItem>;
     /**
      * 생성일
      * @type {string}
-     * @memberof GetShareAlbumFeedResponse
+     * @memberof GetFeedResponse
      */
     'createdAt': string;
     /**
      * 수정일
      * @type {string}
-     * @memberof GetShareAlbumFeedResponse
+     * @memberof GetFeedResponse
      */
     'updatedAt': string;
 }
 /**
  * 
  * @export
- * @interface GetSharedAlbumMember
+ * @interface GetSharedAlbumMemberItem
  */
-export interface GetSharedAlbumMember {
+export interface GetSharedAlbumMemberItem {
     /**
      * 앨범 공유 멤버 아이디
      * @type {number}
-     * @memberof GetSharedAlbumMember
+     * @memberof GetSharedAlbumMemberItem
      */
     'userId': number;
     /**
      * 권한
      * @type {string}
-     * @memberof GetSharedAlbumMember
+     * @memberof GetSharedAlbumMemberItem
      */
-    'role': GetSharedAlbumMemberRoleEnum;
+    'role': GetSharedAlbumMemberItemRoleEnum;
     /**
      * 가입일
      * @type {string}
-     * @memberof GetSharedAlbumMember
+     * @memberof GetSharedAlbumMemberItem
      */
     'joinedAt': string;
 }
 
-export const GetSharedAlbumMemberRoleEnum = {
+export const GetSharedAlbumMemberItemRoleEnum = {
     Owner: 'OWNER',
     Editor: 'EDITOR',
     Viewer: 'VIEWER',
     Temporary: 'TEMPORARY'
 } as const;
 
-export type GetSharedAlbumMemberRoleEnum = typeof GetSharedAlbumMemberRoleEnum[keyof typeof GetSharedAlbumMemberRoleEnum];
+export type GetSharedAlbumMemberItemRoleEnum = typeof GetSharedAlbumMemberItemRoleEnum[keyof typeof GetSharedAlbumMemberItemRoleEnum];
 
 /**
  * 
@@ -524,10 +614,10 @@ export interface GetSharedAlbumResponse {
     'bio': string;
     /**
      * 
-     * @type {Array<GetSharedAlbumMember>}
+     * @type {Array<GetSharedAlbumMemberItem>}
      * @memberof GetSharedAlbumResponse
      */
-    'shareAlbumMember': Array<GetSharedAlbumMember>;
+    'shareAlbumMemberList': Array<GetSharedAlbumMemberItem>;
 }
 /**
  * 
@@ -555,45 +645,45 @@ export interface GetSharedAlbumsAlbum {
     'bio': string;
     /**
      * 
-     * @type {Array<GetSharedAlbumsMember>}
+     * @type {Array<GetSharedAlbumsMemberItem>}
      * @memberof GetSharedAlbumsAlbum
      */
-    'shareAlbumMember': Array<GetSharedAlbumsMember>;
+    'shareAlbumMemberList': Array<GetSharedAlbumsMemberItem>;
 }
 /**
  * 
  * @export
- * @interface GetSharedAlbumsMember
+ * @interface GetSharedAlbumsMemberItem
  */
-export interface GetSharedAlbumsMember {
+export interface GetSharedAlbumsMemberItem {
     /**
      * 앨범 공유 멤버 아이디
      * @type {number}
-     * @memberof GetSharedAlbumsMember
+     * @memberof GetSharedAlbumsMemberItem
      */
     'userId': number;
     /**
      * 권한
      * @type {string}
-     * @memberof GetSharedAlbumsMember
+     * @memberof GetSharedAlbumsMemberItem
      */
-    'role': GetSharedAlbumsMemberRoleEnum;
+    'role': GetSharedAlbumsMemberItemRoleEnum;
     /**
      * 가입일
      * @type {string}
-     * @memberof GetSharedAlbumsMember
+     * @memberof GetSharedAlbumsMemberItem
      */
     'joinedAt': string;
 }
 
-export const GetSharedAlbumsMemberRoleEnum = {
+export const GetSharedAlbumsMemberItemRoleEnum = {
     Owner: 'OWNER',
     Editor: 'EDITOR',
     Viewer: 'VIEWER',
     Temporary: 'TEMPORARY'
 } as const;
 
-export type GetSharedAlbumsMemberRoleEnum = typeof GetSharedAlbumsMemberRoleEnum[keyof typeof GetSharedAlbumsMemberRoleEnum];
+export type GetSharedAlbumsMemberItemRoleEnum = typeof GetSharedAlbumsMemberItemRoleEnum[keyof typeof GetSharedAlbumsMemberItemRoleEnum];
 
 /**
  * 
@@ -637,98 +727,130 @@ export interface JoinShareAlbumByInviteCodeResponse {
 /**
  * 
  * @export
- * @interface ModifyShareAlbumFeedCommentRequest
+ * @interface ModifyCollectionRequest
  */
-export interface ModifyShareAlbumFeedCommentRequest {
+export interface ModifyCollectionRequest {
+    /**
+     * 컬렉션 이름
+     * @type {string}
+     * @memberof ModifyCollectionRequest
+     */
+    'name'?: string;
+    /**
+     * 컬렉션 설명
+     * @type {string}
+     * @memberof ModifyCollectionRequest
+     */
+    'description'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ModifyCollectionResponse
+ */
+export interface ModifyCollectionResponse {
+    /**
+     * 수정된 컬렉션 아이디
+     * @type {string}
+     * @memberof ModifyCollectionResponse
+     */
+    'collectionId': string;
+}
+/**
+ * 
+ * @export
+ * @interface ModifyFeedCommentRequest
+ */
+export interface ModifyFeedCommentRequest {
     /**
      * 유저 아이디
      * @type {number}
-     * @memberof ModifyShareAlbumFeedCommentRequest
+     * @memberof ModifyFeedCommentRequest
      */
     'userId': number;
     /**
      * 댓글 내용
      * @type {string}
-     * @memberof ModifyShareAlbumFeedCommentRequest
+     * @memberof ModifyFeedCommentRequest
      */
     'description': string;
 }
 /**
  * 
  * @export
- * @interface ModifyShareAlbumFeedCommentResponse
+ * @interface ModifyFeedCommentResponse
  */
-export interface ModifyShareAlbumFeedCommentResponse {
+export interface ModifyFeedCommentResponse {
     /**
      * 피드 아이디
      * @type {string}
-     * @memberof ModifyShareAlbumFeedCommentResponse
+     * @memberof ModifyFeedCommentResponse
      */
     'feedId': string;
 }
 /**
  * 
  * @export
- * @interface ModifyShareAlbumFeedItem
+ * @interface ModifyFeedItem
  */
-export interface ModifyShareAlbumFeedItem {
+export interface ModifyFeedItem {
     /**
      * 콘텐츠 아이디
      * @type {string}
-     * @memberof ModifyShareAlbumFeedItem
+     * @memberof ModifyFeedItem
      */
     'contentId': string;
     /**
      * 콘텐츠 타입
      * @type {string}
-     * @memberof ModifyShareAlbumFeedItem
+     * @memberof ModifyFeedItem
      */
-    'type': ModifyShareAlbumFeedItemTypeEnum;
+    'type': ModifyFeedItemTypeEnum;
     /**
      * 콘텐츠 URL
      * @type {string}
-     * @memberof ModifyShareAlbumFeedItem
+     * @memberof ModifyFeedItem
      */
     'contentSmallUrl'?: string;
     /**
      * 콘텐츠 URL
      * @type {string}
-     * @memberof ModifyShareAlbumFeedItem
+     * @memberof ModifyFeedItem
      */
     'contentMediumUrl'?: string;
     /**
      * 콘텐츠 URL
      * @type {string}
-     * @memberof ModifyShareAlbumFeedItem
+     * @memberof ModifyFeedItem
      */
     'contentLargeUrl'?: string;
 }
 
-export const ModifyShareAlbumFeedItemTypeEnum = {
+export const ModifyFeedItemTypeEnum = {
     Image: 'IMAGE',
     Video: 'VIDEO'
 } as const;
 
-export type ModifyShareAlbumFeedItemTypeEnum = typeof ModifyShareAlbumFeedItemTypeEnum[keyof typeof ModifyShareAlbumFeedItemTypeEnum];
+export type ModifyFeedItemTypeEnum = typeof ModifyFeedItemTypeEnum[keyof typeof ModifyFeedItemTypeEnum];
 
 /**
  * 
  * @export
- * @interface ModifyShareAlbumFeedRequest
+ * @interface ModifyFeedRequest
  */
-export interface ModifyShareAlbumFeedRequest {
+export interface ModifyFeedRequest {
     /**
      * 피드 내용
      * @type {string}
-     * @memberof ModifyShareAlbumFeedRequest
+     * @memberof ModifyFeedRequest
      */
     'description'?: string;
     /**
      * 피드 콘텐츠
-     * @type {Array<ModifyShareAlbumFeedItem>}
-     * @memberof ModifyShareAlbumFeedRequest
+     * @type {Array<ModifyFeedItem>}
+     * @memberof ModifyFeedRequest
      */
-    'contents'?: Array<ModifyShareAlbumFeedItem>;
+    'contents'?: Array<ModifyFeedItem>;
 }
 /**
  * 
@@ -805,6 +927,516 @@ export interface ModifyShareAlbumResponse {
  */
 export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 컬렉션에 피드를 추가합니다.
+         * @summary 컬렉션에 피드 추가
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {AddFeedToCollectionRequest} addFeedToCollectionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerAddFeedToCollection: async (collectionId: string, addFeedToCollectionRequest: AddFeedToCollectionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'collectionId' is not null or undefined
+            assertParamExists('collectionControllerAddFeedToCollection', 'collectionId', collectionId)
+            // verify required parameter 'addFeedToCollectionRequest' is not null or undefined
+            assertParamExists('collectionControllerAddFeedToCollection', 'addFeedToCollectionRequest', addFeedToCollectionRequest)
+            const localVarPath = `/collection/{collectionId}/feed`
+                .replace(`{${"collectionId"}}`, encodeURIComponent(String(collectionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(addFeedToCollectionRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 컬렉션을 생성합니다.
+         * @summary 컬렉션 생성
+         * @param {CreateCollectionRequest} createCollectionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerCreateCollection: async (createCollectionRequest: CreateCollectionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createCollectionRequest' is not null or undefined
+            assertParamExists('collectionControllerCreateCollection', 'createCollectionRequest', createCollectionRequest)
+            const localVarPath = `/collection`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createCollectionRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 컬렉션을 삭제합니다.
+         * @summary 컬렉션 삭제
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerDeleteCollection: async (collectionId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'collectionId' is not null or undefined
+            assertParamExists('collectionControllerDeleteCollection', 'collectionId', collectionId)
+            const localVarPath = `/collection/{collectionId}`
+                .replace(`{${"collectionId"}}`, encodeURIComponent(String(collectionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 컬렉션에 피드를 삭제합니다.
+         * @summary 컬렉션에 피드 삭제
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {string} feedId 피드 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerDeleteFeedToCollection: async (collectionId: string, feedId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'collectionId' is not null or undefined
+            assertParamExists('collectionControllerDeleteFeedToCollection', 'collectionId', collectionId)
+            // verify required parameter 'feedId' is not null or undefined
+            assertParamExists('collectionControllerDeleteFeedToCollection', 'feedId', feedId)
+            const localVarPath = `/collection/{collectionId}/feed/{feedId}`
+                .replace(`{${"collectionId"}}`, encodeURIComponent(String(collectionId)))
+                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 컬렉션을 수정합니다.
+         * @summary 컬렉션 수정
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {ModifyCollectionRequest} modifyCollectionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerModifyCollection: async (collectionId: string, modifyCollectionRequest: ModifyCollectionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'collectionId' is not null or undefined
+            assertParamExists('collectionControllerModifyCollection', 'collectionId', collectionId)
+            // verify required parameter 'modifyCollectionRequest' is not null or undefined
+            assertParamExists('collectionControllerModifyCollection', 'modifyCollectionRequest', modifyCollectionRequest)
+            const localVarPath = `/collection/{collectionId}`
+                .replace(`{${"collectionId"}}`, encodeURIComponent(String(collectionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(modifyCollectionRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 공유앨범 피드 댓글을 생성합니다.
+         * @summary 공유앨범 피드 댓글 생성
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {CreateFeedCommentRequest} createFeedCommentRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerCreateComment: async (feedId: string, createFeedCommentRequest: CreateFeedCommentRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'feedId' is not null or undefined
+            assertParamExists('feedControllerCreateComment', 'feedId', feedId)
+            // verify required parameter 'createFeedCommentRequest' is not null or undefined
+            assertParamExists('feedControllerCreateComment', 'createFeedCommentRequest', createFeedCommentRequest)
+            const localVarPath = `/share-album/feed/{feedId}/comment`
+                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createFeedCommentRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 공유앨범 피드를 생성합니다.
+         * @summary 공유앨범 피드 생성
+         * @param {string} id 공유앨범 아이디
+         * @param {CreateFeedRequest} createFeedRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerCreateFeed: async (id: string, createFeedRequest: CreateFeedRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('feedControllerCreateFeed', 'id', id)
+            // verify required parameter 'createFeedRequest' is not null or undefined
+            assertParamExists('feedControllerCreateFeed', 'createFeedRequest', createFeedRequest)
+            const localVarPath = `/share-album/{id}/feed`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createFeedRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 공유앨범 피드 댓글을 삭제합니다.
+         * @summary 공유앨범 피드 댓글 삭제
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {string} commentId 공유앨범 피드 댓글 아이디
+         * @param {DeleteFeedCommentRequest} deleteFeedCommentRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerDeleteComment: async (feedId: string, commentId: string, deleteFeedCommentRequest: DeleteFeedCommentRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'feedId' is not null or undefined
+            assertParamExists('feedControllerDeleteComment', 'feedId', feedId)
+            // verify required parameter 'commentId' is not null or undefined
+            assertParamExists('feedControllerDeleteComment', 'commentId', commentId)
+            // verify required parameter 'deleteFeedCommentRequest' is not null or undefined
+            assertParamExists('feedControllerDeleteComment', 'deleteFeedCommentRequest', deleteFeedCommentRequest)
+            const localVarPath = `/share-album/feed/{feedId}/comment/{commentId}`
+                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)))
+                .replace(`{${"commentId"}}`, encodeURIComponent(String(commentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(deleteFeedCommentRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 공유앨범 피드를 삭제합니다.
+         * @summary 공유앨범 피드 삭제
+         * @param {string} id 공유앨범 아이디
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerDeleteFeed: async (id: string, feedId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('feedControllerDeleteFeed', 'id', id)
+            // verify required parameter 'feedId' is not null or undefined
+            assertParamExists('feedControllerDeleteFeed', 'feedId', feedId)
+            const localVarPath = `/share-album/{id}/feed/{feedId}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
+                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 공유앨범 피드를 가져옵니다.
+         * @summary 공유앨범 피드
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {string} id 공유앨범 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerGetFeed: async (feedId: string, id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'feedId' is not null or undefined
+            assertParamExists('feedControllerGetFeed', 'feedId', feedId)
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('feedControllerGetFeed', 'id', id)
+            const localVarPath = `/share-album/{id}/feed/{feedId}`
+                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)))
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 공유앨범 피드 리스트를 가져옵니다.
+         * @summary 공유앨범 피드 리스트
+         * @param {string} id 공유앨범 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerGetFeedList: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('feedControllerGetFeedList', 'id', id)
+            const localVarPath = `/share-album/{id}/feed`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 공유앨범 피드 댓글을 수정합니다.
+         * @summary 공유앨범 피드 댓글 수정
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {string} commentId 공유앨범 피드 댓글 아이디
+         * @param {ModifyFeedCommentRequest} modifyFeedCommentRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerUpdateComment: async (feedId: string, commentId: string, modifyFeedCommentRequest: ModifyFeedCommentRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'feedId' is not null or undefined
+            assertParamExists('feedControllerUpdateComment', 'feedId', feedId)
+            // verify required parameter 'commentId' is not null or undefined
+            assertParamExists('feedControllerUpdateComment', 'commentId', commentId)
+            // verify required parameter 'modifyFeedCommentRequest' is not null or undefined
+            assertParamExists('feedControllerUpdateComment', 'modifyFeedCommentRequest', modifyFeedCommentRequest)
+            const localVarPath = `/share-album/feed/{feedId}/comment/{commentId}`
+                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)))
+                .replace(`{${"commentId"}}`, encodeURIComponent(String(commentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(modifyFeedCommentRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 공유앨범 피드를 수정합니다.
+         * @summary 공유앨범 피드 수정
+         * @param {string} id 공유앨범 아이디
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {ModifyFeedRequest} modifyFeedRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerUpdateFeed: async (id: string, feedId: string, modifyFeedRequest: ModifyFeedRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('feedControllerUpdateFeed', 'id', id)
+            // verify required parameter 'feedId' is not null or undefined
+            assertParamExists('feedControllerUpdateFeed', 'feedId', feedId)
+            // verify required parameter 'modifyFeedRequest' is not null or undefined
+            assertParamExists('feedControllerUpdateFeed', 'modifyFeedRequest', modifyFeedRequest)
+            const localVarPath = `/share-album/{id}/feed/{feedId}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
+                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(modifyFeedRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 공유앨범을 생성합니다.
          * @summary 공유앨범 생성
@@ -1108,328 +1740,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 공유앨범 피드 댓글을 생성합니다.
-         * @summary 공유앨범 피드 댓글 생성
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {CreateShareAlbumFeedCommentRequest} createShareAlbumFeedCommentRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerCreateComment: async (feedId: string, createShareAlbumFeedCommentRequest: CreateShareAlbumFeedCommentRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'feedId' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerCreateComment', 'feedId', feedId)
-            // verify required parameter 'createShareAlbumFeedCommentRequest' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerCreateComment', 'createShareAlbumFeedCommentRequest', createShareAlbumFeedCommentRequest)
-            const localVarPath = `/share-album/feed/{feedId}/comment`
-                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createShareAlbumFeedCommentRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 공유앨범 피드를 생성합니다.
-         * @summary 공유앨범 피드 생성
-         * @param {string} id 공유앨범 아이디
-         * @param {CreateShareAlbumFeedRequest} createShareAlbumFeedRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerCreateFeed: async (id: string, createShareAlbumFeedRequest: CreateShareAlbumFeedRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerCreateFeed', 'id', id)
-            // verify required parameter 'createShareAlbumFeedRequest' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerCreateFeed', 'createShareAlbumFeedRequest', createShareAlbumFeedRequest)
-            const localVarPath = `/share-album/{id}/feed`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createShareAlbumFeedRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 공유앨범 피드 댓글을 삭제합니다.
-         * @summary 공유앨범 피드 댓글 삭제
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {string} commentId 공유앨범 피드 댓글 아이디
-         * @param {DeleteShareAlbumFeedCommentRequest} deleteShareAlbumFeedCommentRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerDeleteComment: async (feedId: string, commentId: string, deleteShareAlbumFeedCommentRequest: DeleteShareAlbumFeedCommentRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'feedId' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerDeleteComment', 'feedId', feedId)
-            // verify required parameter 'commentId' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerDeleteComment', 'commentId', commentId)
-            // verify required parameter 'deleteShareAlbumFeedCommentRequest' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerDeleteComment', 'deleteShareAlbumFeedCommentRequest', deleteShareAlbumFeedCommentRequest)
-            const localVarPath = `/share-album/feed/{feedId}/comment/{commentId}`
-                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)))
-                .replace(`{${"commentId"}}`, encodeURIComponent(String(commentId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(deleteShareAlbumFeedCommentRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 공유앨범 피드를 삭제합니다.
-         * @summary 공유앨범 피드 삭제
-         * @param {string} id 공유앨범 아이디
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerDeleteFeed: async (id: string, feedId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerDeleteFeed', 'id', id)
-            // verify required parameter 'feedId' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerDeleteFeed', 'feedId', feedId)
-            const localVarPath = `/share-album/{id}/feed/{feedId}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
-                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 공유앨범 피드를 가져옵니다.
-         * @summary 공유앨범 피드
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {string} id 공유앨범 아이디
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerGetFeed: async (feedId: string, id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'feedId' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerGetFeed', 'feedId', feedId)
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerGetFeed', 'id', id)
-            const localVarPath = `/share-album/{id}/feed/{feedId}`
-                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)))
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 공유앨범 피드 리스트를 가져옵니다.
-         * @summary 공유앨범 피드 리스트
-         * @param {string} id 공유앨범 아이디
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerGetFeedList: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerGetFeedList', 'id', id)
-            const localVarPath = `/share-album/{id}/feed`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 공유앨범 피드 댓글을 수정합니다.
-         * @summary 공유앨범 피드 댓글 수정
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {string} commentId 공유앨범 피드 댓글 아이디
-         * @param {ModifyShareAlbumFeedCommentRequest} modifyShareAlbumFeedCommentRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerUpdateComment: async (feedId: string, commentId: string, modifyShareAlbumFeedCommentRequest: ModifyShareAlbumFeedCommentRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'feedId' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerUpdateComment', 'feedId', feedId)
-            // verify required parameter 'commentId' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerUpdateComment', 'commentId', commentId)
-            // verify required parameter 'modifyShareAlbumFeedCommentRequest' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerUpdateComment', 'modifyShareAlbumFeedCommentRequest', modifyShareAlbumFeedCommentRequest)
-            const localVarPath = `/share-album/feed/{feedId}/comment/{commentId}`
-                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)))
-                .replace(`{${"commentId"}}`, encodeURIComponent(String(commentId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(modifyShareAlbumFeedCommentRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 공유앨범 피드를 수정합니다.
-         * @summary 공유앨범 피드 수정
-         * @param {string} id 공유앨범 아이디
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {ModifyShareAlbumFeedRequest} modifyShareAlbumFeedRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerUpdateFeed: async (id: string, feedId: string, modifyShareAlbumFeedRequest: ModifyShareAlbumFeedRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerUpdateFeed', 'id', id)
-            // verify required parameter 'feedId' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerUpdateFeed', 'feedId', feedId)
-            // verify required parameter 'modifyShareAlbumFeedRequest' is not null or undefined
-            assertParamExists('shareAlbumFeedControllerUpdateFeed', 'modifyShareAlbumFeedRequest', modifyShareAlbumFeedRequest)
-            const localVarPath = `/share-album/{id}/feed/{feedId}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
-                .replace(`{${"feedId"}}`, encodeURIComponent(String(feedId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(modifyShareAlbumFeedRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -1440,6 +1750,162 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 export const DefaultApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
     return {
+        /**
+         * 컬렉션에 피드를 추가합니다.
+         * @summary 컬렉션에 피드 추가
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {AddFeedToCollectionRequest} addFeedToCollectionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async collectionControllerAddFeedToCollection(collectionId: string, addFeedToCollectionRequest: AddFeedToCollectionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddFeedToCollectionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.collectionControllerAddFeedToCollection(collectionId, addFeedToCollectionRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 컬렉션을 생성합니다.
+         * @summary 컬렉션 생성
+         * @param {CreateCollectionRequest} createCollectionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async collectionControllerCreateCollection(createCollectionRequest: CreateCollectionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateCollectionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.collectionControllerCreateCollection(createCollectionRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 컬렉션을 삭제합니다.
+         * @summary 컬렉션 삭제
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async collectionControllerDeleteCollection(collectionId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteCollectionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.collectionControllerDeleteCollection(collectionId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 컬렉션에 피드를 삭제합니다.
+         * @summary 컬렉션에 피드 삭제
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {string} feedId 피드 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async collectionControllerDeleteFeedToCollection(collectionId: string, feedId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteFeedToCollectionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.collectionControllerDeleteFeedToCollection(collectionId, feedId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 컬렉션을 수정합니다.
+         * @summary 컬렉션 수정
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {ModifyCollectionRequest} modifyCollectionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async collectionControllerModifyCollection(collectionId: string, modifyCollectionRequest: ModifyCollectionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModifyCollectionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.collectionControllerModifyCollection(collectionId, modifyCollectionRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 공유앨범 피드 댓글을 생성합니다.
+         * @summary 공유앨범 피드 댓글 생성
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {CreateFeedCommentRequest} createFeedCommentRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async feedControllerCreateComment(feedId: string, createFeedCommentRequest: CreateFeedCommentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateFeedCommentResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.feedControllerCreateComment(feedId, createFeedCommentRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 공유앨범 피드를 생성합니다.
+         * @summary 공유앨범 피드 생성
+         * @param {string} id 공유앨범 아이디
+         * @param {CreateFeedRequest} createFeedRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async feedControllerCreateFeed(id: string, createFeedRequest: CreateFeedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateFeedResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.feedControllerCreateFeed(id, createFeedRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 공유앨범 피드 댓글을 삭제합니다.
+         * @summary 공유앨범 피드 댓글 삭제
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {string} commentId 공유앨범 피드 댓글 아이디
+         * @param {DeleteFeedCommentRequest} deleteFeedCommentRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async feedControllerDeleteComment(feedId: string, commentId: string, deleteFeedCommentRequest: DeleteFeedCommentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteFeedCommentResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.feedControllerDeleteComment(feedId, commentId, deleteFeedCommentRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 공유앨범 피드를 삭제합니다.
+         * @summary 공유앨범 피드 삭제
+         * @param {string} id 공유앨범 아이디
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async feedControllerDeleteFeed(id: string, feedId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.feedControllerDeleteFeed(id, feedId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 공유앨범 피드를 가져옵니다.
+         * @summary 공유앨범 피드
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {string} id 공유앨범 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async feedControllerGetFeed(feedId: string, id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetFeedResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.feedControllerGetFeed(feedId, id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 공유앨범 피드 리스트를 가져옵니다.
+         * @summary 공유앨범 피드 리스트
+         * @param {string} id 공유앨범 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async feedControllerGetFeedList(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetFeedListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.feedControllerGetFeedList(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 공유앨범 피드 댓글을 수정합니다.
+         * @summary 공유앨범 피드 댓글 수정
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {string} commentId 공유앨범 피드 댓글 아이디
+         * @param {ModifyFeedCommentRequest} modifyFeedCommentRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async feedControllerUpdateComment(feedId: string, commentId: string, modifyFeedCommentRequest: ModifyFeedCommentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModifyFeedCommentResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.feedControllerUpdateComment(feedId, commentId, modifyFeedCommentRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 공유앨범 피드를 수정합니다.
+         * @summary 공유앨범 피드 수정
+         * @param {string} id 공유앨범 아이디
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {ModifyFeedRequest} modifyFeedRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async feedControllerUpdateFeed(id: string, feedId: string, modifyFeedRequest: ModifyFeedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.feedControllerUpdateFeed(id, feedId, modifyFeedRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
         /**
          * 공유앨범을 생성합니다.
          * @summary 공유앨범 생성
@@ -1533,104 +1999,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.shareAlbumControllerModifyShareAlbumMember(id, userId, modifyShareAlbumMemberRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
-        /**
-         * 공유앨범 피드 댓글을 생성합니다.
-         * @summary 공유앨범 피드 댓글 생성
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {CreateShareAlbumFeedCommentRequest} createShareAlbumFeedCommentRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async shareAlbumFeedControllerCreateComment(feedId: string, createShareAlbumFeedCommentRequest: CreateShareAlbumFeedCommentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateShareAlbumFeedCommentResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shareAlbumFeedControllerCreateComment(feedId, createShareAlbumFeedCommentRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 공유앨범 피드를 생성합니다.
-         * @summary 공유앨범 피드 생성
-         * @param {string} id 공유앨범 아이디
-         * @param {CreateShareAlbumFeedRequest} createShareAlbumFeedRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async shareAlbumFeedControllerCreateFeed(id: string, createShareAlbumFeedRequest: CreateShareAlbumFeedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateShareAlbumFeedResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shareAlbumFeedControllerCreateFeed(id, createShareAlbumFeedRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 공유앨범 피드 댓글을 삭제합니다.
-         * @summary 공유앨범 피드 댓글 삭제
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {string} commentId 공유앨범 피드 댓글 아이디
-         * @param {DeleteShareAlbumFeedCommentRequest} deleteShareAlbumFeedCommentRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async shareAlbumFeedControllerDeleteComment(feedId: string, commentId: string, deleteShareAlbumFeedCommentRequest: DeleteShareAlbumFeedCommentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteShareAlbumFeedCommentResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shareAlbumFeedControllerDeleteComment(feedId, commentId, deleteShareAlbumFeedCommentRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 공유앨범 피드를 삭제합니다.
-         * @summary 공유앨범 피드 삭제
-         * @param {string} id 공유앨범 아이디
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async shareAlbumFeedControllerDeleteFeed(id: string, feedId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shareAlbumFeedControllerDeleteFeed(id, feedId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 공유앨범 피드를 가져옵니다.
-         * @summary 공유앨범 피드
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {string} id 공유앨범 아이디
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async shareAlbumFeedControllerGetFeed(feedId: string, id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetShareAlbumFeedResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shareAlbumFeedControllerGetFeed(feedId, id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 공유앨범 피드 리스트를 가져옵니다.
-         * @summary 공유앨범 피드 리스트
-         * @param {string} id 공유앨범 아이디
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async shareAlbumFeedControllerGetFeedList(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetShareAlbumFeedListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shareAlbumFeedControllerGetFeedList(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 공유앨범 피드 댓글을 수정합니다.
-         * @summary 공유앨범 피드 댓글 수정
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {string} commentId 공유앨범 피드 댓글 아이디
-         * @param {ModifyShareAlbumFeedCommentRequest} modifyShareAlbumFeedCommentRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async shareAlbumFeedControllerUpdateComment(feedId: string, commentId: string, modifyShareAlbumFeedCommentRequest: ModifyShareAlbumFeedCommentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModifyShareAlbumFeedCommentResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shareAlbumFeedControllerUpdateComment(feedId, commentId, modifyShareAlbumFeedCommentRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 공유앨범 피드를 수정합니다.
-         * @summary 공유앨범 피드 수정
-         * @param {string} id 공유앨범 아이디
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {ModifyShareAlbumFeedRequest} modifyShareAlbumFeedRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async shareAlbumFeedControllerUpdateFeed(id: string, feedId: string, modifyShareAlbumFeedRequest: ModifyShareAlbumFeedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shareAlbumFeedControllerUpdateFeed(id, feedId, modifyShareAlbumFeedRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
     }
 };
 
@@ -1641,6 +2009,149 @@ export const DefaultApiFp = function(configuration?: Configuration) {
 export const DefaultApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = DefaultApiFp(configuration)
     return {
+        /**
+         * 컬렉션에 피드를 추가합니다.
+         * @summary 컬렉션에 피드 추가
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {AddFeedToCollectionRequest} addFeedToCollectionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerAddFeedToCollection(collectionId: string, addFeedToCollectionRequest: AddFeedToCollectionRequest, options?: any): AxiosPromise<AddFeedToCollectionResponse> {
+            return localVarFp.collectionControllerAddFeedToCollection(collectionId, addFeedToCollectionRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 컬렉션을 생성합니다.
+         * @summary 컬렉션 생성
+         * @param {CreateCollectionRequest} createCollectionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerCreateCollection(createCollectionRequest: CreateCollectionRequest, options?: any): AxiosPromise<CreateCollectionResponse> {
+            return localVarFp.collectionControllerCreateCollection(createCollectionRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 컬렉션을 삭제합니다.
+         * @summary 컬렉션 삭제
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerDeleteCollection(collectionId: string, options?: any): AxiosPromise<DeleteCollectionResponse> {
+            return localVarFp.collectionControllerDeleteCollection(collectionId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 컬렉션에 피드를 삭제합니다.
+         * @summary 컬렉션에 피드 삭제
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {string} feedId 피드 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerDeleteFeedToCollection(collectionId: string, feedId: string, options?: any): AxiosPromise<DeleteFeedToCollectionResponse> {
+            return localVarFp.collectionControllerDeleteFeedToCollection(collectionId, feedId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 컬렉션을 수정합니다.
+         * @summary 컬렉션 수정
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {ModifyCollectionRequest} modifyCollectionRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerModifyCollection(collectionId: string, modifyCollectionRequest: ModifyCollectionRequest, options?: any): AxiosPromise<ModifyCollectionResponse> {
+            return localVarFp.collectionControllerModifyCollection(collectionId, modifyCollectionRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 공유앨범 피드 댓글을 생성합니다.
+         * @summary 공유앨범 피드 댓글 생성
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {CreateFeedCommentRequest} createFeedCommentRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerCreateComment(feedId: string, createFeedCommentRequest: CreateFeedCommentRequest, options?: any): AxiosPromise<CreateFeedCommentResponse> {
+            return localVarFp.feedControllerCreateComment(feedId, createFeedCommentRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 공유앨범 피드를 생성합니다.
+         * @summary 공유앨범 피드 생성
+         * @param {string} id 공유앨범 아이디
+         * @param {CreateFeedRequest} createFeedRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerCreateFeed(id: string, createFeedRequest: CreateFeedRequest, options?: any): AxiosPromise<CreateFeedResponse> {
+            return localVarFp.feedControllerCreateFeed(id, createFeedRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 공유앨범 피드 댓글을 삭제합니다.
+         * @summary 공유앨범 피드 댓글 삭제
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {string} commentId 공유앨범 피드 댓글 아이디
+         * @param {DeleteFeedCommentRequest} deleteFeedCommentRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerDeleteComment(feedId: string, commentId: string, deleteFeedCommentRequest: DeleteFeedCommentRequest, options?: any): AxiosPromise<DeleteFeedCommentResponse> {
+            return localVarFp.feedControllerDeleteComment(feedId, commentId, deleteFeedCommentRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 공유앨범 피드를 삭제합니다.
+         * @summary 공유앨범 피드 삭제
+         * @param {string} id 공유앨범 아이디
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerDeleteFeed(id: string, feedId: string, options?: any): AxiosPromise<boolean> {
+            return localVarFp.feedControllerDeleteFeed(id, feedId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 공유앨범 피드를 가져옵니다.
+         * @summary 공유앨범 피드
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {string} id 공유앨범 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerGetFeed(feedId: string, id: string, options?: any): AxiosPromise<GetFeedResponse> {
+            return localVarFp.feedControllerGetFeed(feedId, id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 공유앨범 피드 리스트를 가져옵니다.
+         * @summary 공유앨범 피드 리스트
+         * @param {string} id 공유앨범 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerGetFeedList(id: string, options?: any): AxiosPromise<GetFeedListResponse> {
+            return localVarFp.feedControllerGetFeedList(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 공유앨범 피드 댓글을 수정합니다.
+         * @summary 공유앨범 피드 댓글 수정
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {string} commentId 공유앨범 피드 댓글 아이디
+         * @param {ModifyFeedCommentRequest} modifyFeedCommentRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerUpdateComment(feedId: string, commentId: string, modifyFeedCommentRequest: ModifyFeedCommentRequest, options?: any): AxiosPromise<ModifyFeedCommentResponse> {
+            return localVarFp.feedControllerUpdateComment(feedId, commentId, modifyFeedCommentRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 공유앨범 피드를 수정합니다.
+         * @summary 공유앨범 피드 수정
+         * @param {string} id 공유앨범 아이디
+         * @param {string} feedId 공유앨범 피드 아이디
+         * @param {ModifyFeedRequest} modifyFeedRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        feedControllerUpdateFeed(id: string, feedId: string, modifyFeedRequest: ModifyFeedRequest, options?: any): AxiosPromise<boolean> {
+            return localVarFp.feedControllerUpdateFeed(id, feedId, modifyFeedRequest, options).then((request) => request(axios, basePath));
+        },
         /**
          * 공유앨범을 생성합니다.
          * @summary 공유앨범 생성
@@ -1726,96 +2237,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         shareAlbumControllerModifyShareAlbumMember(id: string, userId: number, modifyShareAlbumMemberRequest: ModifyShareAlbumMemberRequest, options?: any): AxiosPromise<ModifyShareAlbumMemberResponse> {
             return localVarFp.shareAlbumControllerModifyShareAlbumMember(id, userId, modifyShareAlbumMemberRequest, options).then((request) => request(axios, basePath));
         },
-        /**
-         * 공유앨범 피드 댓글을 생성합니다.
-         * @summary 공유앨범 피드 댓글 생성
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {CreateShareAlbumFeedCommentRequest} createShareAlbumFeedCommentRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerCreateComment(feedId: string, createShareAlbumFeedCommentRequest: CreateShareAlbumFeedCommentRequest, options?: any): AxiosPromise<CreateShareAlbumFeedCommentResponse> {
-            return localVarFp.shareAlbumFeedControllerCreateComment(feedId, createShareAlbumFeedCommentRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 공유앨범 피드를 생성합니다.
-         * @summary 공유앨범 피드 생성
-         * @param {string} id 공유앨범 아이디
-         * @param {CreateShareAlbumFeedRequest} createShareAlbumFeedRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerCreateFeed(id: string, createShareAlbumFeedRequest: CreateShareAlbumFeedRequest, options?: any): AxiosPromise<CreateShareAlbumFeedResponse> {
-            return localVarFp.shareAlbumFeedControllerCreateFeed(id, createShareAlbumFeedRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 공유앨범 피드 댓글을 삭제합니다.
-         * @summary 공유앨범 피드 댓글 삭제
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {string} commentId 공유앨범 피드 댓글 아이디
-         * @param {DeleteShareAlbumFeedCommentRequest} deleteShareAlbumFeedCommentRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerDeleteComment(feedId: string, commentId: string, deleteShareAlbumFeedCommentRequest: DeleteShareAlbumFeedCommentRequest, options?: any): AxiosPromise<DeleteShareAlbumFeedCommentResponse> {
-            return localVarFp.shareAlbumFeedControllerDeleteComment(feedId, commentId, deleteShareAlbumFeedCommentRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 공유앨범 피드를 삭제합니다.
-         * @summary 공유앨범 피드 삭제
-         * @param {string} id 공유앨범 아이디
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerDeleteFeed(id: string, feedId: string, options?: any): AxiosPromise<boolean> {
-            return localVarFp.shareAlbumFeedControllerDeleteFeed(id, feedId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 공유앨범 피드를 가져옵니다.
-         * @summary 공유앨범 피드
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {string} id 공유앨범 아이디
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerGetFeed(feedId: string, id: string, options?: any): AxiosPromise<GetShareAlbumFeedResponse> {
-            return localVarFp.shareAlbumFeedControllerGetFeed(feedId, id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 공유앨범 피드 리스트를 가져옵니다.
-         * @summary 공유앨범 피드 리스트
-         * @param {string} id 공유앨범 아이디
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerGetFeedList(id: string, options?: any): AxiosPromise<GetShareAlbumFeedListResponse> {
-            return localVarFp.shareAlbumFeedControllerGetFeedList(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 공유앨범 피드 댓글을 수정합니다.
-         * @summary 공유앨범 피드 댓글 수정
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {string} commentId 공유앨범 피드 댓글 아이디
-         * @param {ModifyShareAlbumFeedCommentRequest} modifyShareAlbumFeedCommentRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerUpdateComment(feedId: string, commentId: string, modifyShareAlbumFeedCommentRequest: ModifyShareAlbumFeedCommentRequest, options?: any): AxiosPromise<ModifyShareAlbumFeedCommentResponse> {
-            return localVarFp.shareAlbumFeedControllerUpdateComment(feedId, commentId, modifyShareAlbumFeedCommentRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 공유앨범 피드를 수정합니다.
-         * @summary 공유앨범 피드 수정
-         * @param {string} id 공유앨범 아이디
-         * @param {string} feedId 공유앨범 피드 아이디
-         * @param {ModifyShareAlbumFeedRequest} modifyShareAlbumFeedRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        shareAlbumFeedControllerUpdateFeed(id: string, feedId: string, modifyShareAlbumFeedRequest: ModifyShareAlbumFeedRequest, options?: any): AxiosPromise<boolean> {
-            return localVarFp.shareAlbumFeedControllerUpdateFeed(id, feedId, modifyShareAlbumFeedRequest, options).then((request) => request(axios, basePath));
-        },
     };
 };
 
@@ -1826,6 +2247,175 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
  * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
+    /**
+     * 컬렉션에 피드를 추가합니다.
+     * @summary 컬렉션에 피드 추가
+     * @param {string} collectionId 컬렉션 아이디
+     * @param {AddFeedToCollectionRequest} addFeedToCollectionRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public collectionControllerAddFeedToCollection(collectionId: string, addFeedToCollectionRequest: AddFeedToCollectionRequest, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).collectionControllerAddFeedToCollection(collectionId, addFeedToCollectionRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 컬렉션을 생성합니다.
+     * @summary 컬렉션 생성
+     * @param {CreateCollectionRequest} createCollectionRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public collectionControllerCreateCollection(createCollectionRequest: CreateCollectionRequest, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).collectionControllerCreateCollection(createCollectionRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 컬렉션을 삭제합니다.
+     * @summary 컬렉션 삭제
+     * @param {string} collectionId 컬렉션 아이디
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public collectionControllerDeleteCollection(collectionId: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).collectionControllerDeleteCollection(collectionId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 컬렉션에 피드를 삭제합니다.
+     * @summary 컬렉션에 피드 삭제
+     * @param {string} collectionId 컬렉션 아이디
+     * @param {string} feedId 피드 아이디
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public collectionControllerDeleteFeedToCollection(collectionId: string, feedId: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).collectionControllerDeleteFeedToCollection(collectionId, feedId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 컬렉션을 수정합니다.
+     * @summary 컬렉션 수정
+     * @param {string} collectionId 컬렉션 아이디
+     * @param {ModifyCollectionRequest} modifyCollectionRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public collectionControllerModifyCollection(collectionId: string, modifyCollectionRequest: ModifyCollectionRequest, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).collectionControllerModifyCollection(collectionId, modifyCollectionRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 공유앨범 피드 댓글을 생성합니다.
+     * @summary 공유앨범 피드 댓글 생성
+     * @param {string} feedId 공유앨범 피드 아이디
+     * @param {CreateFeedCommentRequest} createFeedCommentRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public feedControllerCreateComment(feedId: string, createFeedCommentRequest: CreateFeedCommentRequest, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).feedControllerCreateComment(feedId, createFeedCommentRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 공유앨범 피드를 생성합니다.
+     * @summary 공유앨범 피드 생성
+     * @param {string} id 공유앨범 아이디
+     * @param {CreateFeedRequest} createFeedRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public feedControllerCreateFeed(id: string, createFeedRequest: CreateFeedRequest, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).feedControllerCreateFeed(id, createFeedRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 공유앨범 피드 댓글을 삭제합니다.
+     * @summary 공유앨범 피드 댓글 삭제
+     * @param {string} feedId 공유앨범 피드 아이디
+     * @param {string} commentId 공유앨범 피드 댓글 아이디
+     * @param {DeleteFeedCommentRequest} deleteFeedCommentRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public feedControllerDeleteComment(feedId: string, commentId: string, deleteFeedCommentRequest: DeleteFeedCommentRequest, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).feedControllerDeleteComment(feedId, commentId, deleteFeedCommentRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 공유앨범 피드를 삭제합니다.
+     * @summary 공유앨범 피드 삭제
+     * @param {string} id 공유앨범 아이디
+     * @param {string} feedId 공유앨범 피드 아이디
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public feedControllerDeleteFeed(id: string, feedId: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).feedControllerDeleteFeed(id, feedId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 공유앨범 피드를 가져옵니다.
+     * @summary 공유앨범 피드
+     * @param {string} feedId 공유앨범 피드 아이디
+     * @param {string} id 공유앨범 아이디
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public feedControllerGetFeed(feedId: string, id: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).feedControllerGetFeed(feedId, id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 공유앨범 피드 리스트를 가져옵니다.
+     * @summary 공유앨범 피드 리스트
+     * @param {string} id 공유앨범 아이디
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public feedControllerGetFeedList(id: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).feedControllerGetFeedList(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 공유앨범 피드 댓글을 수정합니다.
+     * @summary 공유앨범 피드 댓글 수정
+     * @param {string} feedId 공유앨범 피드 아이디
+     * @param {string} commentId 공유앨범 피드 댓글 아이디
+     * @param {ModifyFeedCommentRequest} modifyFeedCommentRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public feedControllerUpdateComment(feedId: string, commentId: string, modifyFeedCommentRequest: ModifyFeedCommentRequest, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).feedControllerUpdateComment(feedId, commentId, modifyFeedCommentRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 공유앨범 피드를 수정합니다.
+     * @summary 공유앨범 피드 수정
+     * @param {string} id 공유앨범 아이디
+     * @param {string} feedId 공유앨범 피드 아이디
+     * @param {ModifyFeedRequest} modifyFeedRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public feedControllerUpdateFeed(id: string, feedId: string, modifyFeedRequest: ModifyFeedRequest, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).feedControllerUpdateFeed(id, feedId, modifyFeedRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 공유앨범을 생성합니다.
      * @summary 공유앨범 생성
@@ -1925,112 +2515,6 @@ export class DefaultApi extends BaseAPI {
      */
     public shareAlbumControllerModifyShareAlbumMember(id: string, userId: number, modifyShareAlbumMemberRequest: ModifyShareAlbumMemberRequest, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).shareAlbumControllerModifyShareAlbumMember(id, userId, modifyShareAlbumMemberRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 공유앨범 피드 댓글을 생성합니다.
-     * @summary 공유앨범 피드 댓글 생성
-     * @param {string} feedId 공유앨범 피드 아이디
-     * @param {CreateShareAlbumFeedCommentRequest} createShareAlbumFeedCommentRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public shareAlbumFeedControllerCreateComment(feedId: string, createShareAlbumFeedCommentRequest: CreateShareAlbumFeedCommentRequest, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).shareAlbumFeedControllerCreateComment(feedId, createShareAlbumFeedCommentRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 공유앨범 피드를 생성합니다.
-     * @summary 공유앨범 피드 생성
-     * @param {string} id 공유앨범 아이디
-     * @param {CreateShareAlbumFeedRequest} createShareAlbumFeedRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public shareAlbumFeedControllerCreateFeed(id: string, createShareAlbumFeedRequest: CreateShareAlbumFeedRequest, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).shareAlbumFeedControllerCreateFeed(id, createShareAlbumFeedRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 공유앨범 피드 댓글을 삭제합니다.
-     * @summary 공유앨범 피드 댓글 삭제
-     * @param {string} feedId 공유앨범 피드 아이디
-     * @param {string} commentId 공유앨범 피드 댓글 아이디
-     * @param {DeleteShareAlbumFeedCommentRequest} deleteShareAlbumFeedCommentRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public shareAlbumFeedControllerDeleteComment(feedId: string, commentId: string, deleteShareAlbumFeedCommentRequest: DeleteShareAlbumFeedCommentRequest, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).shareAlbumFeedControllerDeleteComment(feedId, commentId, deleteShareAlbumFeedCommentRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 공유앨범 피드를 삭제합니다.
-     * @summary 공유앨범 피드 삭제
-     * @param {string} id 공유앨범 아이디
-     * @param {string} feedId 공유앨범 피드 아이디
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public shareAlbumFeedControllerDeleteFeed(id: string, feedId: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).shareAlbumFeedControllerDeleteFeed(id, feedId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 공유앨범 피드를 가져옵니다.
-     * @summary 공유앨범 피드
-     * @param {string} feedId 공유앨범 피드 아이디
-     * @param {string} id 공유앨범 아이디
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public shareAlbumFeedControllerGetFeed(feedId: string, id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).shareAlbumFeedControllerGetFeed(feedId, id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 공유앨범 피드 리스트를 가져옵니다.
-     * @summary 공유앨범 피드 리스트
-     * @param {string} id 공유앨범 아이디
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public shareAlbumFeedControllerGetFeedList(id: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).shareAlbumFeedControllerGetFeedList(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 공유앨범 피드 댓글을 수정합니다.
-     * @summary 공유앨범 피드 댓글 수정
-     * @param {string} feedId 공유앨범 피드 아이디
-     * @param {string} commentId 공유앨범 피드 댓글 아이디
-     * @param {ModifyShareAlbumFeedCommentRequest} modifyShareAlbumFeedCommentRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public shareAlbumFeedControllerUpdateComment(feedId: string, commentId: string, modifyShareAlbumFeedCommentRequest: ModifyShareAlbumFeedCommentRequest, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).shareAlbumFeedControllerUpdateComment(feedId, commentId, modifyShareAlbumFeedCommentRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 공유앨범 피드를 수정합니다.
-     * @summary 공유앨범 피드 수정
-     * @param {string} id 공유앨범 아이디
-     * @param {string} feedId 공유앨범 피드 아이디
-     * @param {ModifyShareAlbumFeedRequest} modifyShareAlbumFeedRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public shareAlbumFeedControllerUpdateFeed(id: string, feedId: string, modifyShareAlbumFeedRequest: ModifyShareAlbumFeedRequest, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).shareAlbumFeedControllerUpdateFeed(id, feedId, modifyShareAlbumFeedRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
