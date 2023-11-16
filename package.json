@@ -1,6 +1,6 @@
 {
   "name": "@ppotto/social-api-client",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Ppotto Social API Client",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
