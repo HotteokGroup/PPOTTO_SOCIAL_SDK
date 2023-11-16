@@ -235,7 +235,7 @@ export interface CreateShareAlbumRequest {
      * @type {string}
      * @memberof CreateShareAlbumRequest
      */
-    'bio': string;
+    'bio'?: string;
     /**
      * 공유앨범 생성자의 아이디
      * @type {number}
