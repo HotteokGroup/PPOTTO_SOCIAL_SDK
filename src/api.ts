@@ -899,13 +899,13 @@ export interface ModifyShareAlbumRequest {
      * @type {string}
      * @memberof ModifyShareAlbumRequest
      */
-    'name': string;
+    'name'?: string;
     /**
      * 공유앨범 설명
      * @type {string}
      * @memberof ModifyShareAlbumRequest
      */
-    'bio': string;
+    'bio'?: string;
 }
 /**
  * 
