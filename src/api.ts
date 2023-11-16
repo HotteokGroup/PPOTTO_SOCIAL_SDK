@@ -324,6 +324,169 @@ export interface DeleteShareAlbumMemberResponse {
 /**
  * 
  * @export
+ * @interface GetCollectionFeedsContentItem
+ */
+export interface GetCollectionFeedsContentItem {
+    /**
+     * 피드 아이디
+     * @type {string}
+     * @memberof GetCollectionFeedsContentItem
+     */
+    'id': string;
+    /**
+     * 피드 타입
+     * @type {string}
+     * @memberof GetCollectionFeedsContentItem
+     */
+    'type': GetCollectionFeedsContentItemTypeEnum;
+    /**
+     * 피드 콘텐츠 URL
+     * @type {string}
+     * @memberof GetCollectionFeedsContentItem
+     */
+    'contentSmallUrl'?: string;
+    /**
+     * 피드 콘텐츠 URL
+     * @type {string}
+     * @memberof GetCollectionFeedsContentItem
+     */
+    'contentMediumUrl'?: string;
+    /**
+     * 피드 콘텐츠 URL
+     * @type {string}
+     * @memberof GetCollectionFeedsContentItem
+     */
+    'contentLargeUrl'?: string;
+}
+
+export const GetCollectionFeedsContentItemTypeEnum = {
+    Image: 'IMAGE',
+    Video: 'VIDEO'
+} as const;
+
+export type GetCollectionFeedsContentItemTypeEnum = typeof GetCollectionFeedsContentItemTypeEnum[keyof typeof GetCollectionFeedsContentItemTypeEnum];
+
+/**
+ * 
+ * @export
+ * @interface GetCollectionFeedsItem
+ */
+export interface GetCollectionFeedsItem {
+    /**
+     * 피드 아이디
+     * @type {string}
+     * @memberof GetCollectionFeedsItem
+     */
+    'id': string;
+    /**
+     * 유저 아이디
+     * @type {number}
+     * @memberof GetCollectionFeedsItem
+     */
+    'userId': number;
+    /**
+     * 피드 내용
+     * @type {string}
+     * @memberof GetCollectionFeedsItem
+     */
+    'description'?: string;
+    /**
+     * 피드 콘텐츠
+     * @type {Array<GetCollectionFeedsContentItem>}
+     * @memberof GetCollectionFeedsItem
+     */
+    'contentList': Array<GetCollectionFeedsContentItem>;
+    /**
+     * 생성일
+     * @type {string}
+     * @memberof GetCollectionFeedsItem
+     */
+    'createdAt': string;
+    /**
+     * 수정일
+     * @type {string}
+     * @memberof GetCollectionFeedsItem
+     */
+    'updatedAt': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetCollectionFeedsResponse
+ */
+export interface GetCollectionFeedsResponse {
+    /**
+     * 토탈 카운트
+     * @type {number}
+     * @memberof GetCollectionFeedsResponse
+     */
+    'total': number;
+    /**
+     * 피드 리스트
+     * @type {Array<GetCollectionFeedsItem>}
+     * @memberof GetCollectionFeedsResponse
+     */
+    'list': Array<GetCollectionFeedsItem>;
+}
+/**
+ * 
+ * @export
+ * @interface GetCollectionsItem
+ */
+export interface GetCollectionsItem {
+    /**
+     * 컬렉션 아이디
+     * @type {string}
+     * @memberof GetCollectionsItem
+     */
+    'id': string;
+    /**
+     * 컬렉션 이름
+     * @type {string}
+     * @memberof GetCollectionsItem
+     */
+    'name': string;
+    /**
+     * 컬렉션 설명
+     * @type {string}
+     * @memberof GetCollectionsItem
+     */
+    'description'?: string;
+    /**
+     * 컬렉션 생성일
+     * @type {string}
+     * @memberof GetCollectionsItem
+     */
+    'createdAt': string;
+    /**
+     * 컬렉션 수정일
+     * @type {string}
+     * @memberof GetCollectionsItem
+     */
+    'updatedAt': string;
+}
+/**
+ * 
+ * @export
+ * @interface GetCollectionsResponse
+ */
+export interface GetCollectionsResponse {
+    /**
+     * 토탈 카운트
+     * @type {number}
+     * @memberof GetCollectionsResponse
+     */
+    'total': number;
+    /**
+     * 컬렉션 리스트
+     * @type {Array<GetCollectionsItem>}
+     * @memberof GetCollectionsResponse
+     */
+    'list': Array<GetCollectionsItem>;
+}
+/**
+ * 
+ * @export
  * @interface GetFeedCommentItem
  */
 export interface GetFeedCommentItem {
@@ -375,19 +538,19 @@ export interface GetFeedContentItem {
      * @type {string}
      * @memberof GetFeedContentItem
      */
-    'contentSmallUrl': string;
+    'contentSmallUrl'?: string;
     /**
      * 콘텐츠 URL
      * @type {string}
      * @memberof GetFeedContentItem
      */
-    'contentMediumUrl': string;
+    'contentMediumUrl'?: string;
     /**
      * 콘텐츠 URL
      * @type {string}
      * @memberof GetFeedContentItem
      */
-    'contentLargeUrl': string;
+    'contentLargeUrl'?: string;
 }
 
 export const GetFeedContentItemTypeEnum = {
@@ -471,7 +634,7 @@ export interface GetFeedListItem {
      * @type {Array<GetFeedListContentItem>}
      * @memberof GetFeedListItem
      */
-    'feedContentList': Array<GetFeedListContentItem>;
+    'contentList': Array<GetFeedListContentItem>;
     /**
      * 생성일
      * @type {string}
@@ -527,19 +690,19 @@ export interface GetFeedResponse {
      * @type {string}
      * @memberof GetFeedResponse
      */
-    'description': string;
+    'description'?: string;
     /**
      * 피드 콘텐츠
      * @type {Array<GetFeedContentItem>}
      * @memberof GetFeedResponse
      */
-    'feedContentList': Array<GetFeedContentItem>;
+    'contentList': Array<GetFeedContentItem>;
     /**
      * 피드 코멘트
      * @type {Array<GetFeedCommentItem>}
      * @memberof GetFeedResponse
      */
-    'feedCommentList': Array<GetFeedCommentItem>;
+    'commentList': Array<GetFeedCommentItem>;
     /**
      * 생성일
      * @type {string}
@@ -1063,6 +1226,77 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 컬렉션 피드 리스트를 조회합니다.
+         * @summary 컬렉션 피드 리스트
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerGetCollectionFeeds: async (collectionId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'collectionId' is not null or undefined
+            assertParamExists('collectionControllerGetCollectionFeeds', 'collectionId', collectionId)
+            const localVarPath = `/collection/{collectionId}/feed`
+                .replace(`{${"collectionId"}}`, encodeURIComponent(String(collectionId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 컬렉션 리스트를 조회합니다.
+         * @summary 컬렉션 리스트
+         * @param {number} userId 고객 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerGetCollections: async (userId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('collectionControllerGetCollections', 'userId', userId)
+            const localVarPath = `/collection`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (userId !== undefined) {
+                localVarQueryParameter['userId'] = userId;
+            }
 
 
     
@@ -1797,6 +2031,28 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * 컬렉션 피드 리스트를 조회합니다.
+         * @summary 컬렉션 피드 리스트
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async collectionControllerGetCollectionFeeds(collectionId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetCollectionFeedsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.collectionControllerGetCollectionFeeds(collectionId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 컬렉션 리스트를 조회합니다.
+         * @summary 컬렉션 리스트
+         * @param {number} userId 고객 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async collectionControllerGetCollections(userId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetCollectionsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.collectionControllerGetCollections(userId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * 컬렉션을 수정합니다.
          * @summary 컬렉션 수정
          * @param {string} collectionId 컬렉션 아이디
@@ -2052,6 +2308,26 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.collectionControllerDeleteFeedToCollection(collectionId, feedId, options).then((request) => request(axios, basePath));
         },
         /**
+         * 컬렉션 피드 리스트를 조회합니다.
+         * @summary 컬렉션 피드 리스트
+         * @param {string} collectionId 컬렉션 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerGetCollectionFeeds(collectionId: string, options?: any): AxiosPromise<GetCollectionFeedsResponse> {
+            return localVarFp.collectionControllerGetCollectionFeeds(collectionId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 컬렉션 리스트를 조회합니다.
+         * @summary 컬렉션 리스트
+         * @param {number} userId 고객 아이디
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionControllerGetCollections(userId: number, options?: any): AxiosPromise<GetCollectionsResponse> {
+            return localVarFp.collectionControllerGetCollections(userId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 컬렉션을 수정합니다.
          * @summary 컬렉션 수정
          * @param {string} collectionId 컬렉션 아이디
@@ -2295,6 +2571,30 @@ export class DefaultApi extends BaseAPI {
      */
     public collectionControllerDeleteFeedToCollection(collectionId: string, feedId: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).collectionControllerDeleteFeedToCollection(collectionId, feedId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 컬렉션 피드 리스트를 조회합니다.
+     * @summary 컬렉션 피드 리스트
+     * @param {string} collectionId 컬렉션 아이디
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public collectionControllerGetCollectionFeeds(collectionId: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).collectionControllerGetCollectionFeeds(collectionId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 컬렉션 리스트를 조회합니다.
+     * @summary 컬렉션 리스트
+     * @param {number} userId 고객 아이디
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public collectionControllerGetCollections(userId: number, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).collectionControllerGetCollections(userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
